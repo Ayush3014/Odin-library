@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button class="open">Add Book</button>
+    <dialog>
+      <form method="dialog" class="addBook">
+        <table>
+          <thead>
+            <th style="border-bottom: 2px solid black" colspan="2">
+              Enter Book Information
+            </th>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><label for="title">Book Title: </label></td>
+              <td><input type="text" class="title" id="title" required /></td>
+            </tr>
+            <tr>
+              <td><label for="author">Author: </label></td>
+              <td>
+                <input type="text" class="author" id="author" required />
+              </td>
+            </tr>
+            <tr>
+              <td><label for="numPages">Number of pages: </label></td>
+              <td>
+                <input type="number" class="numPages" id="numPages" required />
+              </td>
+            </tr>
+            <tr>
+              <td><label for="haveRead">Have Read:</label></td>
+              <td>
+                <select name="haveRead" id="haveRead" class="haveRead" required>
+                  <option value="">select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td><button class="close">Close</button></td>
+              <td>
+                <button type="submit">Add Book</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </dialog>
+    <div class="book-container"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
