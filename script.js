@@ -1,7 +1,3 @@
-/*
-All of your book objects are going to be stored in a simple array, so add a function to the script (not the constructor) that can take user’s input and store the new book objects into an array.
-*/
-
 const myLibrary = [];
 const addBookForm = document.querySelector('.addBook');
 const cardDiv = document.querySelector('.card');
@@ -9,12 +5,15 @@ const dialog = document.querySelector('dialog');
 const openDialog = document.querySelector('.open');
 const closeDialog = document.querySelector('.close');
 
+let count = 0;
+
 // Book constructor
-function Book(title, author, numPages, haveRead) {
+function Book(title, author, numPages, haveRead, count) {
   this.title = title;
   this.author = author;
   this.numPages = numPages;
   this.haveRead = haveRead;
+  this.count = 'count' + count;
 }
 
 addBookForm.addEventListener('submit', (e) => {
@@ -32,7 +31,8 @@ addBookForm.addEventListener('submit', (e) => {
     numPages !== null &&
     haveRead !== null
   ) {
-    let myBook = new Book(title, author, numPages, haveRead);
+    count++;
+    let myBook = new Book(title, author, numPages, haveRead, count);
     myLibrary.push(myBook);
   }
 
@@ -42,13 +42,6 @@ addBookForm.addEventListener('submit', (e) => {
   addBookForm.reset();
 });
 
-/*
-Write a function that loops through the array and displays each book on the page. You can display them in some sort of table, or each on their own “card”.
-*/
-
-/*
-Add a “NEW BOOK” button that brings up a form allowing users to input the details for the new book
-*/
 function displayBook() {
   const bookContainer = document.querySelector('.book-container');
   // Clear existing content
@@ -59,13 +52,48 @@ function displayBook() {
     bookCard.className = 'card';
 
     bookCard.innerHTML = `
-      <h3 class='title'>${book.title}</h3>
-      <p class='author'>Author: ${book.author}</p>
-      <p class='numPages'>Pages: ${book.numPages}</p>
-      <p class='haveRead'>Have Read: ${book.haveRead}</p>
+      <h3 class='title ${book.count}'>${book.title}</h3>
+      <p class='author ${book.count}'>Author: ${book.author}</p>
+      <p class='numPages ${book.count}'>Pages: ${book.numPages}</p>
+      <p class='haveRead ${book.count}'>Have Read: ${book.haveRead}</p>
+      <button class='deleteButton ${book.count}' onclick=deleteBook('${book.title}','${book.count}')>Delete</button>
+      <button class='toggleButton ${book.count}' onclick=toggleRead('${book.haveRead}','${book.title}','${book.count}')>Update Read</button>
     `;
 
     bookContainer.appendChild(bookCard);
+  }
+}
+
+function toggleRead(haveRead, title, count) {
+  for (let book of myLibrary) {
+    if (title == book.title) {
+      if (haveRead == 'Yes') {
+        book.haveRead = 'No';
+        document.querySelector(`.haveRead.${count}`).textContent =
+          'Have Read: No';
+      } else if (haveRead == 'No') {
+        book.haveRead = 'Yes';
+        document.querySelector(`.haveRead.${count}`).textContent =
+          'Have Read: Yes';
+      }
+    }
+  }
+  displayBook();
+  console.log(myLibrary);
+}
+
+function deleteBook(bookTitle, count) {
+  for (let book of myLibrary) {
+    if (bookTitle == book.title) {
+      const index = myLibrary.indexOf(book);
+      myLibrary.splice(index, 1);
+      document.querySelector(`.title.${count}`).remove();
+      document.querySelector(`.author.${count}`).remove();
+      document.querySelector(`.numPages.${count}`).remove();
+      document.querySelector(`.haveRead.${count}`).remove();
+      document.querySelector(`.deleteButton.${count}`).remove();
+      document.querySelector(`.toggleButton.${count}`).remove();
+    }
   }
 }
 
