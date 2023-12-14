@@ -56,8 +56,17 @@ function displayBook() {
       <p class='author ${book.count}'>Author: ${book.author}</p>
       <p class='numPages ${book.count}'>Pages: ${book.numPages}</p>
       <p class='haveRead ${book.count}'>Have Read: ${book.haveRead}</p>
-      <button class='deleteButton ${book.count}' onclick=deleteBook('${book.title}','${book.count}')>Delete</button>
-      <button class='toggleButton ${book.count}' onclick=toggleRead('${book.haveRead}','${book.title}','${book.count}')>Update Read</button>
+      <button class='deleteButton ${
+        book.count
+      }' onclick="deleteBook('${book.title.replace(/'/g, "\\'")}', '${
+      book.count
+    }')">Delete</button>
+      <button class="toggleButton ${book.count}" onclick="toggleRead('${
+      book.haveRead
+    }', '${book.title.replace(/'/g, "\\'")}', '${
+      book.count
+    }')">Update Read</button>
+
     `;
 
     bookContainer.appendChild(bookCard);
