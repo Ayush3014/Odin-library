@@ -16,6 +16,25 @@ function Book(title, author, numPages, haveRead, count) {
   this.count = 'count' + count;
 }
 
+const formInputs = document.querySelectorAll('form input,select');
+
+function resetInputStyles() {
+  formInputs.forEach((input) => {
+    input.style.backgroundColor = ''; // remove the background color
+  });
+}
+
+resetInputStyles();
+
+openDialog.addEventListener('click', () => {
+  resetInputStyles();
+  formInputs.forEach((input) => {
+    input.addEventListener('input', () => {
+      input.style.backgroundColor = '#22c55e';
+    });
+  });
+});
+
 addBookForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -34,6 +53,10 @@ addBookForm.addEventListener('submit', (e) => {
     count++;
     let myBook = new Book(title, author, numPages, haveRead, count);
     myLibrary.push(myBook);
+  }
+
+  if (myLibrary.length != 0) {
+    document.querySelector('.noBooks').textContent = '';
   }
 
   displayBook();

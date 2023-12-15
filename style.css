@@ -1,6 +1,21 @@
 * {
-  box-sizing: border-box;
   font-family: consolas;
+  background-color: #fef9c3;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+header div {
+  background-color: #06b6d4;
+  color: white;
+  text-align: center;
+  height: 50px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  font-size: 30px;
 }
 
 .book-container {
@@ -12,4 +27,129 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.open {
+  background-color: #22c55e;
+  margin-left: 15px;
+  color: white;
+  border: 2px solid black;
+  /* outline: 2px solid black; */
+  border-radius: 5px;
+  height: 27px;
+  width: 83px;
+  font-size: 15px;
+  word-spacing: -5px;
+}
+
+.open:hover {
+  background-color: #16a34a;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.17), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
+  border: 2px solid white;
+}
+
+dialog {
+  border-radius: 5px;
+  font-size: large;
+}
+
+form input,
+select {
+  border-radius: 5px;
+  border: 2px solid black;
+  color: black;
+}
+
+form input:hover,
+select:hover {
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.17), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
+  border: 2px solid white;
+  color: black;
+}
+
+form button {
+  background-color: #22c55e;
+  color: white;
+  border: 2px solid black;
+  /* outline: 2px solid black; */
+  border-radius: 5px;
+  height: 27px;
+  width: 83px;
+  font-size: 15px;
+  word-spacing: -5px;
+}
+
+form button:hover {
+  background-color: #16a34a;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.17), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
+  border: 2px solid white;
+}
+
+.card {
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 250px;
+  margin-left: 15px;
+  word-spacing: 0px;
+  background-color: #06b6d4;
+}
+
+.title,
+.author,
+.numPages,
+.haveRead {
+  background-color: inherit;
+}
+
+.deleteButton,
+.toggleButton {
+  margin-bottom: 10px;
+  background-color: #164e63;
+  color: white;
+  border: 2px solid black;
+  /* outline: 2px solid black; */
+  border-radius: 5px;
+  height: 27px;
+  width: 83px;
+  font-size: 15px;
+  word-spacing: -5px;
+}
+
+.toggleButton {
+  width: 125px;
+}
+
+.deleteButton:hover,
+.toggleButton:hover {
+  background-color: #06b6d4;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.17), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
+  border: 2px solid white;
+}
+
+footer div {
+  position: fixed;
+  bottom: 0;
+  background-color: #06b6d4;
+  height: 30px;
+  width: 100%;
+  padding-top: 10px;
+  text-align: center;
+  font-size: 15px;
+}
+
+footer div span,
+div a {
+  background-color: #06b6d4;
+  color: white;
+  height: 30px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+}
+
+div a i {
+  background-color: #06b6d4;
 }
